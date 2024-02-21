@@ -5,11 +5,11 @@ from random_num import RandomGen
 
 class TestRandomGen(unittest.TestCase):
 
-    def test_probabilities_respected_in_results(self):
+    def test_probabilities_in_results(self):
         generator = RandomGen()
         probabilities = generator._probabilities
         values_set = generator._random_nums
-        iterations = (len(values_set) * int(100 / min(probabilities)))
+        iterations = int(100 / min(probabilities))
         generated_nums = [generator.next_num() for _ in range(iterations + 1)]
         count = dict(Counter(generated_nums).items())
         for index, probability in enumerate(probabilities):
@@ -24,7 +24,7 @@ class TestRandomGen(unittest.TestCase):
         generator = RandomGen()
         probabilities = generator._probabilities
         values_set = generator._random_nums
-        iterations = (len(values_set) * int(10 / min(probabilities)))
+        iterations = int(10 / min(probabilities))
 
         for i in range(iterations + 1):
             num = generator.next_num()
